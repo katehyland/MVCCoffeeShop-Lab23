@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace CoffeeShop.Models
 {
@@ -12,10 +11,11 @@ namespace CoffeeShop.Models
         }
 
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Phone { get; set; }
+        public int Phone { get; set; }
+        public decimal? Funds { get; set; }
 
         public virtual ICollection<UserItems> UserItems { get; set; }
     }

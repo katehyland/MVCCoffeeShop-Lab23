@@ -34,6 +34,11 @@ namespace CoffeeShop
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddSession();
+            services.AddMvc();
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.Configure<IdentityOptions>(
+                    options => options.SignIn.RequireConfirmedEmail = true
+                );
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

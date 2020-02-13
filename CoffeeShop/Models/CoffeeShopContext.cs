@@ -74,7 +74,7 @@ namespace CoffeeShop.Models
                     .IsRequired()
                     .HasMaxLength(100);
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.Username)
                     .IsRequired()
                     .HasMaxLength(100);
 

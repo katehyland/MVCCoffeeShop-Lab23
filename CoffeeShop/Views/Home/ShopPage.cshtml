@@ -1,0 +1,60 @@
+﻿@model ShopDbContext
+
+@{
+    ViewData["Title"] = "ShopPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Shop Page</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Name
+            </th>
+            <th>
+               Description
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (Items item in Model.Items) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                <td>
+                    <button onclick="location.href='@Url.Action("Transaction", "Home", new { itemPrice = item.Price, quantity = item.Quantity - 1, name = item.Name})'" type="button">Buy</button>
+                </td>
+                }
+                @*<td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
